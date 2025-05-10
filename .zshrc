@@ -53,9 +53,9 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export XDG_TRASH_DIR="$HOME/.Trash"
 
 ##Load Aliases
-_lazy_load_aliases() {
-    source ~/.zsh_aliases
-    unfunction _lazy_load_aliases  # remove itself after running once
+load_aliases() {
+    source ~/.zshal
+    unfunction load_aliases  # remove itself after running once
 }
 
 function pip() {
@@ -106,7 +106,7 @@ bindkey "^[[3~" delete-char
 
 
 autoload -Uz add-zsh-hook
-add-zsh-hook preexec _lazy_load_aliases
+add-zsh-hook preexec load_aliases
 export PATH=$HOME/.local/bin:$PATH
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu-no
