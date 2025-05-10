@@ -60,6 +60,7 @@ Older Keybinds like :wq and :q! still work here if you liked them
         Ctrl + A to Select All
         Ctrl + X to Undo ----I couldn't get Ctrl + Z to work 
         Ctrl + K to delete a line 
+        Ctrl + W to Quit without Saving ---F10 Should work but I like Ctrl + W
 And There You have it
 
 
