@@ -67,6 +67,7 @@ Older Keybinds like :wq and :q! still work here if you liked them
         Alt + L to Quit without Saving 
         
 And There You have it a beginner-friendly working vim that you built yourself.
+You can add plugins but I like my .vimrc
 
 
 
