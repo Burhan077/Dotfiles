@@ -16,7 +16,6 @@ alias lt='eza --icons=auto --tree'
 # _________________________
 
 alias pacman='sudo pacman'
-alias systemctl='sudo systemctl'
 alias journalctl='sudo journalctl'
 alias reboot='sudo reboot'
 alias ls='sudo ls'
@@ -64,7 +63,7 @@ alias touch='sudo touch'
 # _________________________
 
 alias nano='sudo nano'
-alias vim='sudo vim -y'
+alias vim='sudo vim'
 alias vc='code'
 export EDITOR='vim -y'
 export VISUAL='vim -y'
@@ -99,13 +98,11 @@ alias ifconfig='sudo ifconfig'
 # _______________________________________________
 
 alias whoami='echo "💀 You are inevitable."'
-alias bigboi='sudo'
 alias cleanse='pacman -Rns $(pacman -Qdtq)'
 alias nuke-cache='rm -rf /var/cache/pacman/pkg/*'
-alias snap='pacman -Syu && yay -Syu'
+alias update='pacman -Syyu && yay -Syyu'
 alias how-fast='time zsh -i -c exit'
 alias fixit='pacman -Syyu --noconfirm && mkinitcpio -P && grub-mkconfig -o /boot/grub/grub.cfg'
-alias neofetch='neofetch | lolcat'
 
 # ______________________________
 #
@@ -173,7 +170,5 @@ function command_not_found_handler() {
 
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
-
-export $(cat ~/.config/user-dirs.dirs | grep XDG_DOWNLOAD_DIR)
 export PATH=$PATH:/usr/local/go/bin
 
