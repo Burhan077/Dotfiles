@@ -47,7 +47,12 @@ vnoremap <C-a> ggVG
 
 "Control + Q to Save and Quit 
 inoremap <C-q> <Esc>:wq<CR>	            
-nnoremap <C-q> :wq<CR>		           
+nnoremap <C-q> :wq<CR>		 
+
+"Quit Without Saving
+nnoremap <C-w> :q!<CR>                           
+inoremap <C-w> <Esc>:q!<CR>	                  
+vnoremap <C-w> <Esc>:q!<CR> 
 
 "Control + X for Undo
 inoremap <C-x> <Esc>:normal! u<CR>i       
