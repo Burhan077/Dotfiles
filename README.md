@@ -40,14 +40,14 @@ Change it to
 Then run 
 
         makepkg -si
-The Build will take around 15 to 20 Minutes depending on your CPU 
+The Build will take around 15 to 20 Minutes depending on your CPU. 
 To confirm that you have clipboard support do
 
         vim --version | grep clipboard
 You should see something like this
 
         +clipboard       +xterm_clipboard
-Move the .vimrc to your Home Directory and now you habe yourself Vim with some SANE keybinds
+Move the .vimrc to your Home Directory and now you have yourself Vim with some SANE keybinds.
 The Keybinds are as Follows
 
         F12 To Save and F10 To Quit ---That is if you liked the crazy ones
