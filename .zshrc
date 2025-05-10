@@ -104,20 +104,9 @@ bindkey '^R' history-incremental-search-backward
 bindkey "^[[3~" delete-char
 
 
-#___________________________________________________
-#   
-#	Additions --For fun 
-#___________________________________________________
-
-#neofetch | lolcat
-#echo "Don't Hack the Matrix" | lolcat
-
 
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec _lazy_load_aliases
-alias vi='sudo vim -y'
-alias hi='echo "Ready to hack the NSA?"'
-export PATH=$HOME/.spicetify:$PATH
 export PATH=$HOME/.local/bin:$PATH
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu-no
