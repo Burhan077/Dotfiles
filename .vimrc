@@ -13,7 +13,7 @@ set noimd					  " No In built graphing
 set noimcmdline					  " Disable In built Graph
 set clipboard=unnamedplus           		  " Use System Clipboard for Copy and Paste
 filetype off                        	 	  " Don't Look at the File
-syntax off                           	 	  " Set Syntax as On 
+syntax on                           	 	  " Set Syntax as On 
 
 "Keybingings
 "inoremap <Insert> <Esc>              		  " Insert Key to escape to Normal Mode
