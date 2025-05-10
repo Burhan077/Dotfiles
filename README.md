@@ -40,18 +40,22 @@ Change it to
 Then run 
 
         makepkg -si
+        
 The Build will take around 15 to 20 Minutes depending on your CPU. 
-To confirm that you have clipboard support do
+To confirm that you have clipboard support paste this in your terminal
 
         vim --version | grep clipboard
-You should see something like this
+        
+You should see something like this:
 
         +clipboard       +xterm_clipboard
+        
 Move the .vimrc to your Home Directory and now you have yourself Vim with some SANE keybinds.
-The Keybinds are as Follows
+The Keybinds are as Follows:
 
-        F12 To Save and F10 To Quit ---That is if you liked the crazy ones
-        Ctrl Q to Save --If you are Normal
+        Ctrl Q to Save    --If you are Normal
+        Alt + L to Quit   -I just wanted this
+        
 Older Keybinds like :wq and :q! still work here if you liked them
 
         Ctrl + C to Copy
@@ -60,8 +64,9 @@ Older Keybinds like :wq and :q! still work here if you liked them
         Ctrl + A to Select All
         Ctrl + X to Undo ----I couldn't get Ctrl + Z to work 
         Ctrl + K to delete a line 
-        Ctrl + W to Quit without Saving ---F10 Should work but I like Ctrl + W
-And There You have it
+        Alt + L to Quit without Saving 
+        
+And There You have it a beginner-friendly working vim that you built yourself.
 
 
 
