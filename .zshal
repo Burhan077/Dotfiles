@@ -1,0 +1,173 @@
+# __________________________
+#    Aliases
+#    Terminal utilities
+# __________________________
+
+alias c='clear'
+alias ls='eza -1 --icons=auto'
+alias l='eza -lh --icons=auto'
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
+alias ld='eza -lhD --icons=auto'
+alias lt='eza --icons=auto --tree'
+
+# ________________________
+#
+#  System, Sudo and Nano
+# _________________________
+
+alias pacman='sudo pacman'
+alias journalctl='sudo journalctl'
+alias reboot='sudo reboot'
+alias ls='sudo ls'
+alias poweroff='sudo poweroff'
+alias shutdown='sudo shutdown now'
+alias halt='sudo halt'
+alias useradd='sudo useradd'
+alias usermod='sudo usermod'
+
+# ______________________
+#
+#  AUR {Yay / Paru}
+# ______________________
+
+
+alias un='$aurhelper -Rns'
+alias up='$aurhelper -Syu'
+alias pl='$aurhelper -Qs'
+alias pa='$aurhelper -Ss'
+alias pc='$aurhelper -Sc'
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -'
+
+
+
+# ______________________
+#
+#  Quick file ops
+# ______________________
+
+alias cp='sudo cp'
+alias mv='sudo mv'
+alias rm='sudo rm'
+alias mkdir='mkdir -p'
+alias cat='sudo cat'
+alias rmdir='sudo rmdir'
+alias rmmod='sudo rmmod'
+alias insmod='sudo insmod'
+alias chown='sudo chown'
+alias chmod='sudo chmod'
+alias touch='sudo touch'
+
+# _________________________
+#
+#  Editors
+# _________________________
+
+alias nano='sudo nano'
+alias vim='sudo vim'
+alias vc='code'
+export EDITOR='vim'
+export VISUAL='vim'
+alias modprobe='sudo modprobe'
+alias py='python'
+alias dmesg='sudo dmesg'
+
+
+# ________________________
+#
+#  Disk Configuration
+# ________________________
+
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias cfdisk='sudo cfdisk'
+alias fdisk='sudo fdisk'
+alias gdisk='sudo gdisk'
+alias partitionmanager='sudo partitionmanager'
+alias mkfs='sudo mkfs'
+alias grub-mkconfig='sudo grub-mkconfig'
+alias lsblk='sudo lsblk'
+alias blkid='sudo blkid'
+alias ping='sudo ping'
+alias mkinitcpio='sudo mkinitcpio'
+alias ip='sudo ip'
+alias ifconfig='sudo ifconfig'
+
+# ______________________________________________
+#
+#  Cool Stuff --Fun-- --whoami--
+# _______________________________________________
+
+
+alias cleanse='pacman -Rns $(pacman -Qdtq)'
+alias nuke-cache='rm -rf /var/cache/pacman/pkg/*'
+alias update='pacman -Syyu && yay -Syyu'
+alias how-fast='time zsh -i -c exit'
+alias justfixit='pacman -Syyu --noconfirm && mkinitcpio -P && grub-mkconfig -o /boot/grub/grub.cfg'
+
+# ______________________________
+#
+#  Directory Shortcuts
+# ______________________________
+
+alias ..='cd ..'
+alias home='cd ~'
+alias downloads='cd ~/Downloads'
+alias docs='cd ~/Documents'
+alias etc='cd /etc'
+alias var='cd /var'
+alias usr='cd /usr'
+alias boot='cd /boot'
+alias root='cd /'
+
+# _________________________ 
+#
+#  Turbo Functions
+# _________________________
+
+# --- AUR Helper Detection (set once, no runtime check) ---
+if [[ -z "$aurhelper" ]]; then
+    aurhelper="$(command -v yay || command -v paru || echo '')"
+fi
+
+# --- Install Function (no repeated pacman calls) ---
+function in() {
+    local -a arch aur
+    local pkg
+    local arch_pkg_list=$(pacman -Slq)
+
+    for pkg in "$@"; do
+        if grep -qx "$pkg" <<< "$arch_pkg_list"; then
+            arch+=("$pkg")
+        else
+            aur+=("$pkg")
+        fi
+    done
+
+    (( ${#arch[@]} )) && sudo pacman -S "${arch[@]}"
+    (( ${#aur[@]} && -n $aurhelper )) && $aurhelper -S "${aur[@]}"
+}
+
+# --- Interactive Shell Comments ---
+[[ -o interactive ]] && setopt interactivecomments
+
+# --- Fast Command Not Found Handler ---
+if [[ -f ~/.local/share/command_list ]]; then
+    mapfile -t _known_commands < ~/.local/share/command_list
+fi
+
+function command_not_found_handler() {
+    local bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+
+    printf 'zsh: command not found: %s\n' "$1"
+    if [[ ${_known_commands[(Ie)$1]} -le ${#_known_commands[@]} ]]; then
+        printf "I can't find ${bright}$1${reset}. Try: ${green}pacman -F %s${reset}\n" "$1"
+    else
+        printf "${bright}No clue.${reset} Find it yourself.\n"
+    fi
+    return 127
+}
+
+
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
