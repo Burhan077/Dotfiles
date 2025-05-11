@@ -83,12 +83,6 @@ setopt BANG_HIST
 bindkey '^R' history-incremental-search-backward
 bindkey "^[[3~" delete-char
 
-
-# Add custom alias and function setup (for fun or system commands)
-alias pacman='sudo pacman'
-alias vi='sudo vim'
-alias hi='echo "Ready to hack the NSA?"'
-export PATH=$HOME/.local/bin:$PATH
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu-no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
