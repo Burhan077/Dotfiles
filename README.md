@@ -62,7 +62,7 @@ Older Keybinds like :wq and :q! still work here if you liked them
         Ctrl + V to Paste
         Ctrl + F  to Find --If you liked Nano 
         Ctrl + A to Select All
-        Ctrl + X to Undo ----I couldn't get Ctrl + Z to work 
+        Ctrl + Z to Undo 
         Ctrl + K to delete a line 
         Alt + L to Quit without Saving 
         
