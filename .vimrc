@@ -39,11 +39,11 @@ vnoremap <C-a> ggVG
 inoremap <C-q> <Esc>:wq<CR>	            
 nnoremap <C-q> :wq<CR>		           
 
-"Control + X for Undo
-"inoremap <C-x> <Esc>:normal! u<CR>0i       
-inoremap <C-x> <Esc>u0i
-nnoremap <C-x> u0
-vnoremap <C-x> <Esc>u0
+"Control + Z for Undo
+"inoremap <C-z> <Esc>:normal! u<CR>0i       
+inoremap <C-z> <Esc>u0i
+nnoremap <C-z> u0
+vnoremap <C-z> <Esc>u0
 
 
 
