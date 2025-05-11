@@ -53,7 +53,6 @@ alias cat='sudo cat'
 alias rmdir='sudo rmdir'
 alias rmmod='sudo rmmod'
 alias insmod='sudo insmod'
-alias chown='sudo chown'
 alias chmod='sudo chmod'
 alias touch='sudo touch'
 
