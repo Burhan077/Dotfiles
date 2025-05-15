@@ -1,0 +1,47 @@
+" LinesWithCenteredOverlayInsert - show lines in centered floating FZF popup
+function! Lines()
+  " Build lines list: line number + content, from first to last line
+  let l:lines = []
+  for i in range(1, line('$'))
+    call add(l:lines, printf("%5d %s", i, getline(i)))
+  endfor
+
+  " Floating window options (size, position, border)
+  let l:window_opts = {
+        \ 'width': 0.92,
+        \ 'height': 0.60,
+        \ 'relative': v:true,
+        \ 'row': 0.5,
+        \ 'col': 0.5,
+        \ 'anchor': 'CENTER',
+        \ 'border': 'rounded',
+        \ 'highlight': 'Normal'
+        \ }
+
+  " FZF options: source lines, sink function to jump + insert, prompt, floating window
+  let l:opts = {
+        \ 'source': l:lines,
+        \ 'sink*': function('JumpToLineAndInsert'),
+        \ 'options': '--prompt "Lines> " --no-sort',
+        \ 'window': l:window_opts
+        \ }
+
+  " Run FZF with preview floating window
+  call fzf#run(fzf#vim#with_preview(l:opts))
+endfunction
+
+" JumpToLineAndInsert - called by FZF sink, jumps to line and enters insert mode
+function! JumpToLineAndInsert(selected)
+  if empty(a:selected)
+    return
+  endif
+
+  " Extract line number from selected line string (first number in line)
+  let l:lnum = matchstr(a:selected[0], '^\s*\zs\d\+')
+  if l:lnum != ''
+    execute l:lnum
+    normal! zz       " Center cursor vertically
+    call feedkeys('i', 'n') " Enter insert mode
+  endif
+endfunction
+
