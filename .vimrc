@@ -17,25 +17,22 @@ set noimcmdline					  " Disable In built Graph
 set clipboard=unnamedplus           		  " Use System Clipboard for Copy and Paste
 filetype off                        	 	  " Don't Look at the File
 syntax on                           	 	  " Set Syntax as On 
-	         
-
-if filereadable(expand("$HOME/.vconf"))
-  source $HOME/.vconf
-endif
-	         
+"----------------------------------------------------------------------------------------------------------	         
+source $HOME/.vconfs
+source $HOME/.vimfs
 
 "Keybingings
-inoremap <Insert> <Esc>              		  " Insert Key to escape to Normal Mode
+inoremap <Insert> <Esc>              		
 
 "Save & Quit
-nnoremap <F12> :wq!<CR>                            " F12 Key to Save and Quit in Normal Mode
-inoremap <F12> <Esc>:wq!<CR>	                  " F12 Key To Save and  Quit in Insert mode
-vnoremap <F12> <Esc>:wq!<CR>                       " F12 Key to Save and Quit in Visual mode
+nnoremap <F12> :wq!<CR>
+inoremap <F12> <Esc>:wq!<CR>
+vnoremap <F12> <Esc>:wq!<CR>
 
 "Quit Without Saving
-nnoremap <F10> :q!<CR>                            " F10 Key to Quit without saving in Normal Mode
-inoremap <F10> <Esc>:q!<CR>	                  " F10 Key to Quit without saving in Insert Mode
-vnoremap <F10> <Esc>:q!<CR>                       " F10 Key to Quit without Saving in Visual mode
+nnoremap <F10> :q!<CR>
+inoremap <F10> <Esc>:q!<CR>
+vnoremap <F10> <Esc>:q!<CR>
 
 "Functional Backspace
 nnoremap <BS> d
@@ -49,9 +46,9 @@ vnoremap <C-v> "+P
 inoremap <C-v> <Esc>"+gPi
 
 "Control + A to select All
-nnoremap <C-a> ggVG
+nnoremap <C-a> ggVGi
 inoremap <C-a> <Esc>ggVGi
-vnoremap <C-a> ggVG
+vnoremap <C-a> ggVGi
 
 "Control + Q to Save and Quit 
 inoremap <C-q> <Esc>:wq!<CR>	            
@@ -87,8 +84,8 @@ inoremap <C-Right> <Esc>Gi
 nnoremap <C-Right> Gi
 vnoremap <C-Right> <Esc>Gi
 	         
-" FZF File Search
-nnoremap <C-l> :Lines<CR>
-inoremap <C-l> <Esc>:Lines<CR> 
-vnoremap <C-l> :Lines<CR>
+"Control + L to Find and Replace
+nnoremap <C-l> :call Lines()<CR>
+inoremap <C-l> <Esc>:call Lines()<CR>
+vnoremap <C-l> <Esc>:call Lines()<CR>
 
