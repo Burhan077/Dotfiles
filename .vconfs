@@ -1,0 +1,11 @@
+"$HOME/.vconfs - Plugin definitions
+
+call plug#begin('$HOME/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'git@github.com:jiangmiao/auto-pairs.git'
+	         
+
+call plug#end()
+	         
