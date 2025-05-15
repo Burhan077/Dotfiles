@@ -40,15 +40,16 @@ vnoremap <BS> d
 
 
 "Control + C && Control + V to Copy and Paste
-vnoremap <C-c> "+y
-nnoremap <C-v> "+gP
-vnoremap <C-v> "+P
+vnoremap <C-c> "+yi
+nnoremap <C-v> "+gPi
+vnoremap <C-v> "+Pi
 inoremap <C-v> <Esc>"+gPi
 
 "Control + A to select All
-nnoremap <C-a> ggVGi
-inoremap <C-a> <Esc>ggVGi
-vnoremap <C-a> ggVGi
+nnoremap <C-a> ggVG
+inoremap <C-a> <Esc>ggVG
+vnoremap <C-a> ggVG
+
 
 "Control + Q to Save and Quit 
 inoremap <C-q> <Esc>:wq!<CR>	            
@@ -59,15 +60,10 @@ nnoremap <C-z> :undo<CR>
 inoremap <C-z> <C-o>:undo<CR>
 vnoremap <C-z> <Esc>:undo<CR>
 
-"Control + K to deleta a line
-nnoremap <C-k> ddi0
+"Control + K to deletea line
+nnoremap <C-k> ddi0i
 vnoremap <C-k> d<Esc>0i
-inoremap <C-k> <Esc>ddi<Esc>0i
-
-"Control + F to Search
-inoremap <C-f> <Esc>/
-nnoremap <C-f> /
-vnoremap <C-f> <Esc>/
+inoremap <C-k> <Esc>dd0i
 
 "Control + SpaceBar to Quit without Saving
  inoremap <C-Space> <Esc>:q!<CR>
@@ -84,8 +80,22 @@ inoremap <C-Right> <Esc>Gi
 nnoremap <C-Right> Gi
 vnoremap <C-Right> <Esc>Gi
 	         
+"Control + F to Find 
+nnoremap <C-f> :call Lines()<CR>
+inoremap <C-f> <Esc>:call Lines()<CR>
+vnoremap <C-f> <Esc>:call Lines()<CR>
+
 "Control + L to Find and Replace
-nnoremap <C-l> :call Lines()<CR>
-inoremap <C-l> <Esc>:call Lines()<CR>
-vnoremap <C-l> <Esc>:call Lines()<CR>
+nnoremap <C-l> :call Replace()<CR>
+inoremap <C-l> <Esc>:call Replace()<CR>
+vnoremap <C-l> <Esc>:call Replace()<CR>
+
+"Control + X to Cut
+vnoremap <C-x> "+d
+nnoremap <C-x> "+dd
+inoremap <C-x> <Esc>"+ddi
+
+
+
+
 
