@@ -177,7 +177,17 @@ Older Keybinds like :wq and :q! still work here if you liked them
        
         
 And There You have it a beginner-friendly working vim that you built yourself.
-You can add plugins but I like my .vimrc
+To add plugins do this
+
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+Then download or clone the .vconf and .vimrc files
+Enter command mode and type 
+
+        :PlugInstall
+
+Then quit vim and reopen it
+
 
 
 
