@@ -164,17 +164,17 @@ Move the .vimrc to your Home Directory and now you have yourself Vim with some S
 The Keybinds are as Follows:
 
         Ctrl Q to Save    --If you are Normal
-        Alt + L to Quit   -I just wanted this
+        Ctrl + Space to Quit   -I just wanted this
         
 Older Keybinds like :wq and :q! still work here if you liked them
 
         Ctrl + C to Copy
         Ctrl + V to Paste
-        Ctrl + F  to Find --If you liked Nano 
+        Ctrl + F  to Find 
         Ctrl + A to Select All
         Ctrl + Z to Undo 
         Ctrl + K to delete a line 
-        Alt + L to Quit without Saving 
+       
         
 And There You have it a beginner-friendly working vim that you built yourself.
 You can add plugins but I like my .vimrc
