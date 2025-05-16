@@ -4,7 +4,7 @@ set laststatus=2                   		  " Always Have a Status Bar at the Bottom
 set nocompatible                    		  " Set Compatibility to Vim not Vi
 set wrap                            		  " Wrap Text
 set mouse=a                         		  " Include Mouse Support 
-set nohlsearch                         	      	  " Highlight Searches
+set hlsearch                         	      	  " Highlight Searches
 set wildmenu                        	 	  " Get Tab Autocomplete
 let mapleader = " "                               " Sets Space Bar as Leader
 let g:loaded_matchparen = 1   	                  " Do not Highlight Brackets   
@@ -60,10 +60,11 @@ nnoremap <C-z> :undo<CR>
 inoremap <C-z> <C-o>:undo<CR>
 vnoremap <C-z> <Esc>:undo<CR>
 
-"Control + K to deletea line
-nnoremap <C-k> ddi0i
+"Control + K to delete a line
+nnoremap <C-k> 0Di
 vnoremap <C-k> d<Esc>0i
-inoremap <C-k> <Esc>dd0i
+inoremap <C-k> <Esc>0Di
+
 
 "Control + SpaceBar to Quit without Saving
  inoremap <C-Space> <Esc>:q!<CR>
@@ -80,15 +81,15 @@ inoremap <C-Right> <Esc>Gi
 nnoremap <C-Right> Gi
 vnoremap <C-Right> <Esc>Gi
 	         
-"Control + F to Find 
-nnoremap <C-f> :call Lines()<CR>
-inoremap <C-f> <Esc>:call Lines()<CR>
-vnoremap <C-f> <Esc>:call Lines()<CR>
+"Control + L to Find 
+nnoremap <C-l> :call Lines()<CR>
+inoremap <C-l> <Esc>:call Lines()<CR>
+vnoremap <C-l> <Esc>:call Lines()<CR>
 
-"Control + L to Find and Replace
-nnoremap <C-l> :call Replace()<CR>
-inoremap <C-l> <Esc>:call Replace()<CR>
-vnoremap <C-l> <Esc>:call Replace()<CR>
+"Control + F to Find and Replace
+nnoremap <C-f> :call Replace()<CR>
+inoremap <C-f> <Esc>:call Replace()<CR>
+vnoremap <C-f> <Esc>:call Replace()<CR>
 
 "Control + X to Cut
 vnoremap <C-x> "+d
@@ -96,6 +97,11 @@ nnoremap <C-x> "+dd
 inoremap <C-x> <Esc>"+ddi
 
 
+"""Test"""
+inoremap <C-t> <Esc>^i
+nnoremap <C-t> ^
 
+nnoremap <M-Space> $
+inoremap <M-Space> <Esc>$a
 
 
