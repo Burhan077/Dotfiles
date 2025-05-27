@@ -4,45 +4,41 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Ensure Zinit is Installed
-ZINIT_HOME=$HOME/.zinit
-if [ ! -d "$ZINIT_HOME" ]; then
-    mkdir -p "$(dirname $ZINIT_HOME)"
-    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+ZCOM_HOME=$HOME/.zcomet
+if [ ! -d "$ZCOM_HOME" ]; then
+    mkdir -p "$(dirname $ZCOM_HOME)"
+    git clone --depth=1 https://github.com/agkozak/zcomet "$ZCOM_HOME"
 fi
 
-# Load zinit (plugin manager)
-source "$HOME/.zinit/zinit.zsh"
-zcompile ~/.zshrc
+#Load Zcomet
+source "$HOME/.zcomet/zcomet.zsh"
+zcompile ~/.xshrc
+zcompile ~/.xshal
 
 # Prompt: Powerlevel10k
-zi ice depth=1; zi light romkatv/powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+zcomet load romkatv/powerlevel10k
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Load Plugins
-zi light zsh-users/zsh-autosuggestions
-zi ice wait lucid; zi light zdharma-continuum/fast-syntax-highlighting
-zi ice wait lucid; zi light zsh-users/zsh-completions
-zi ice wait lucid; zi light agkozak/zsh-z
-zi ice wait lucid; zi light hlissner/zsh-autopair
-zi ice wait lucid; zi light jeffreytse/zsh-vi-mode
-zi ice wait lucid; zi light Aloxaf/fzf-tab
+zcomet load zsh-users/zsh-autosuggestions
+zcomet load zdharma-continuum/fast-syntax-highlighting
+zcomet load zsh-users/zsh-completions
+zcomet load agkozak/zsh-z
+zcomet load hlissner/zsh-autopair
+#zcomet load jeffreytse/zsh-vi-mode
+zcomet load Aloxaf/fzf-tab
 
 # PATH Exports
 export PATH="$HOME/.npm-global/bin:$PATH"
 export XDG_TRASH_DIR="$HOME/.Trash"
 
-# Load Aliases (Now after prompt)
+# Aliases loader
 autoload -Uz add-zsh-hook
+load_aliases() { source ~/.xshal }
+# You can re-enable this if you want it to update per prompt
+# add-zsh-hook precmd load_aliases
 
-# Custom function to load aliases from ~/.zshal
-load_aliases() {
-    source ~/.zshal
-}
-
-# Add load_aliases function to the "precmd" hook
-add-zsh-hook precmd load_aliases
-
-# The pip function (used for Python package installations)
+# PIP function override
 function pip() {
     if [[ "$1" == "install" ]]; then
         shift
@@ -52,38 +48,47 @@ function pip() {
     fi
 }
 
-# Performance Boosters
-DISABLE_AUTO_TITLE="true"
-export PROMPT_COMMAND=""
-eval "$(fzf --zsh)"
+# Completion setup
+autoload -Uz compinit && compinit -C
+zstyle ':completion:*' rehash true
+
+# fzf-tab specific config
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
+
+# Autosuggestions highlight style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,bold,underline'
 
 # Magic completion
 autoload -Uz compinit && compinit -C
 zstyle ':completion:*' rehash true
 
-# Customize Autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,bold,underline'
-
 # History Configuration
-HISTFILE=~/.zsh_history
+HISTFILE=~/.xhist
 HISTSIZE=100000
 SAVEHIST=100000
+setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS HIST_REDUCE_BLANKS HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY BANG_HIST
 
-# History Behavior
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt EXTENDED_HISTORY
-setopt BANG_HIST
-
-# Bonus Smoothness
+# Bindings & Visuals
 bindkey '^R' history-incremental-search-backward
 bindkey "^[[3~" delete-char
-
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu-no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
+
+# Source aliases last
+source ~/.xshal
+
+# Use system-wide fzf setup
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+
+
+bindkey '^[[1;2D' beginning-of-line
+# Shift + Left Arrow = beginning-of-line
+bindkey -M vicmd '^[[1;2D' beginning-of-line
+bindkey -M viins '^[[1;2D' beginning-of-line
+bindkey -M vicmd '^[[1;2C' end-of-line
+bindkey -M viins '^[[1;2C' end-of-line
+bindkey '^[[1;2C' end-of-line
 
