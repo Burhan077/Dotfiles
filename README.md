@@ -28,6 +28,7 @@ And Voila when you open your Terminal the requirements will be downloaded --This
 Now you have a blazing fast shell![250510_11h03m34s_screenshot](https://github.com/user-attachments/assets/363efbc5-a786-47c1-bb02-4be9170230e9)
 ![250510_11h02m35s_screenshot](https://github.com/user-attachments/assets/e52f6a88-6548-4b7b-b600-d48bcbe5d941)
 I found a really cool app called GNU stow so you can make a dotfiles directory then cd into it and run 
+        
         stow .
 
 This creates symlinks in the user's home directory($HOME)
