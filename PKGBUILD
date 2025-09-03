@@ -1,4 +1,4 @@
-# Maintainer: You ;)
+# Maintainer: Me lol ;)
 pkgname=vim
 pkgver=9.1.1623
 _versiondir=91
