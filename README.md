@@ -33,7 +33,17 @@ I found a really cool app called GNU stow so you can make a dotfiles directory t
 
 This creates symlinks in the user's home directory($HOME)
 For vim to have clipboard support you need to fork the repo and edit the PKGBUILD but you can switch it out with the one above then compile it and install it.
-To confirm it worked do this 
+Yo can also just clone the repo but first install these packages.
+
+        sudo pacman -S --needed base-devel git libx11 libxt
+
+To clone it run
+
+        git clone https://gitlab.archlinux.org/archlinux/packaging/packages/vim.git
+        cd vim
+
+Then replace the PKGBUILD with the one above
+To confirm it worked do this. 
 
         vim --version | grep clipboard
         
