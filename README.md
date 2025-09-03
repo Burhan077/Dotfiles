@@ -1,4 +1,5 @@
 The files above are Z Shell Config Files 
+Also this mainly works on arch sice I use Arch btw.
 You Need Git installed to work with these configs
 Type this in your Terminal 
 
@@ -26,19 +27,12 @@ After Cloning the repo move the .p10k.zsh , .zshrc and .zsh_aliases to your home
 And Voila when you open your Terminal the requirements will be downloaded --This should take somewhere between 2 and 3 Minutes depending on your Internet connection
 Now you have a blazing fast shell![250510_11h03m34s_screenshot](https://github.com/user-attachments/assets/363efbc5-a786-47c1-bb02-4be9170230e9)
 ![250510_11h02m35s_screenshot](https://github.com/user-attachments/assets/e52f6a88-6548-4b7b-b600-d48bcbe5d941)
-For the .vimrc file you need to do the following 
+I found a really cool app called GNU stow so you can make a dotfiles directory then cd into it and run 
+        stow .
 
-        git clone https://aur.archlinux.org/cgit/aur.git/diff/vim.git
-        cd vim
-        nano PKGBUILD
-Delete Everything then paste the PKGBUILD above in there
-
-Then run this
-
-        makepkg -si
-        
-The Build will take around 15 to 20 Minutes depending on your CPU. 
-To confirm that you have clipboard support paste this in your terminal
+This creates symlinks in the user's home directory($HOME)
+For vim to have clipboard support you need to fork the repo and edit the PKGBUILD but you can switch it out with the one above then compile it and install it.
+To confirm it worked do this 
 
         vim --version | grep clipboard
         
