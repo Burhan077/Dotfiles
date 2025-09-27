@@ -7,7 +7,9 @@ Type this in your Terminal
         sudo pacman -S zsh
          
 .P10K.ZSH      --These are Prompt Configs
+
 .ZSHRC        --This is the main Z shell Config File
+
 .ZSH_ALIASES  --These are aliases of commonly used commands and some such as journalctl and dmesg are not so often used
  
 
