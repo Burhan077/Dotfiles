@@ -1,4 +1,4 @@
-The files above are Z Shell Config Files 
+The files above are Z Shell Config Files  
 Also this mainly works on arch sice I use Arch btw.
 You Need Git installed to work with these configs
 Type this in your Terminal 
