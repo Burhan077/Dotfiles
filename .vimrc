@@ -1,19 +1,19 @@
-autocmd VimEnter * startinsert     		  " Always Open In Insert Mode
+autocmd VimEnter * startinsert     		      " Always Open In Insert Mode
 set number                          		  " Show Absolute Line Number in Vim
-set laststatus=2                   		  " Always Have a Status Bar at the Bottom
+set laststatus=2                   		      " Always Have a Status Bar at the Bottom
 set nocompatible                    		  " Set Compatibility to Vim not Vi
 set wrap                            		  " Wrap Text
 set mouse=a                         		  " Include Mouse Support 
-set hlsearch                         	      	  " Highlight Searches
+set hlsearch                         	      " Highlight Searches
 set wildmenu                        	 	  " Get Tab Autocomplete
-let mapleader = " "                               " Sets Space Bar as Leader
-let g:loaded_matchparen = 1   	                  " Do not Highlight Brackets   
-set backspace=indent,eol,start      	          " Backspace Works Normally
-set ignorecase					  " Search is not Case Sensitive
-set smartcase					  " Search is not Case Sensitive
-set noimd					  " No In built graphing
-set noswapfile					  " No Swap Files
-set noimcmdline					  " Disable In built Graph
+let mapleader = " "                           " Sets Space Bar as Leader
+let g:loaded_matchparen = 1   	              " Do not Highlight Brackets   
+set backspace=indent,eol,start      	      " Backspace Works Normally
+set ignorecase					              " Search is not Case Sensitive
+set smartcase					              " Search is not Case Sensitive
+set noimd					                  " No In built graphing
+set noswapfile					              " No Swap Files
+set noimcmdline					              " Disable In built Graph
 set clipboard=unnamedplus           		  " Use System Clipboard for Copy and Paste
 filetype off                        	 	  " Don't Look at the File
 syntax on                           	 	  " Set Syntax as On 
@@ -67,7 +67,7 @@ inoremap <C-k> <Esc>0Di
 
 
 "Control + SpaceBar to Quit without Saving
- inoremap <C-Space> <Esc>:q!<CR>
+inoremap <C-Space> <Esc>:q!<CR>
 nnoremap <C-Space> :q!<CR>	         	
 vnoremap <C-Space> <Esc>:q!<CR>
 
